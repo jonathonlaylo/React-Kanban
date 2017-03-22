@@ -1,12 +1,9 @@
 /*jshint esversion: 6 */
 const express = require('express');
 const app =  express();
-const bp = require('body-parser');
 const router = express.Router();
 const db = require('../models');
 const { Card } = db;
-
-router.use(bp.urlencoded({ extended: true }));
 
 router.route('/')
   .get((req, res) => {
@@ -17,18 +14,40 @@ router.route('/')
   })
   .post((req, res) => {
     Card.create({
-      title: req.body.title,
-      priority: req.body.priority,
-      status: req.body.status
+      Title: req.body.title,
+      Priority: req.body.priority,
+      Status: req.body.status
     })
     .then((task) => {
       res.send();
     });
   });
 
-router.route('/new')
-  .post((req, res) => {
-
+router.route('/:id')
+  .put((req, res) => {
+    console.log(req.body);
+    Card.findById(req.params.id)
+    .then((task) => {
+      if(task) {
+        console.log('task', task);
+        task.update({
+          Title: req.body.title,
+          Priority: req.body.priority,
+          Status: req.body.status
+        }).then((task) => {
+          res.redirect(303, '/api/kanban/todo');
+        });
+      }
+    });
+  })
+  .delete((req, res) => {
+    Card.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((task) => {
+      res.redirect(303, '/api/kanban/todo');
+    });
   });
 
 module.exports = router;

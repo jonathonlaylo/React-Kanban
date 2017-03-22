@@ -8,7 +8,7 @@ const cardsroute = require('./routes/cards.js');
 
 app.use(bp.urlencoded({ extended: true }));
 
-app.use('/api/kanban/:status', cardsroute);
+app.use('/api/kanban/todo', cardsroute);
 
 app.get('/', (req, res) => {
   res.send('sanity test');
