@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import KanbanTitle from '../../components/kanbanTitle.js';
-import CardListView from '../../components/CardListView.js';
+// import CardListView from '../../components/CardListView.js';
 import KanbanNew from '../../components/KanbanNew.js';
 import FakeLibrary from '../../lib/lib.js';
 import './styles.css';
@@ -10,9 +10,9 @@ class App extends Component {
       super(props);
       this.title='React Kanban';
       this.state = {
-        fakeList : FakeLibrary,
-        TodoList : []
+        fakeList : FakeLibrary
       }
+      this.createNewCard = this.createNewCard.bind(this);
     }
 
   //get data from form
@@ -23,6 +23,14 @@ class App extends Component {
 
   //set state from data
 
+  createNewCard(newCard){
+    console.log(newCard);
+    const oReq = new XMLHttpRequest();
+    oReq.open("POST", 'http://localhost:8080/api/kanban/todo');
+    oReq.setRequestHeader("Content-type", "application/json");
+    oReq.send(JSON.stringify(newCard));
+  }
+
   render() {
     console.log(this.title);
     return (
@@ -30,27 +38,10 @@ class App extends Component {
         <div className="App-header">
           <KanbanTitle title={this.title}/>
         </div>
-        <div className="App-body">
-          <form>
-            <ul>
-              {
-                this.state.fakeList.map(({_id, title, priority, status}) =>
-                  <li>
-                    <CardListView
-                      key={_id}
-                      title={title}
-                      priority={priority}
-                      status={status}
-                    />
-                  </li>
-                )
-              }
-            </ul>
-          </form>
-
-          <KanbanNew createNewCard={this.state}/>
-
+        <div className="KanbanNew">
+            <KanbanNew createNewCard={this.createNewCard}/>
         </div>
+
       </div>
     );
   }

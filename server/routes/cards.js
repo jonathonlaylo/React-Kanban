@@ -13,10 +13,11 @@ router.route('/')
     });
   })
   .post((req, res) => {
+    console.log(req.body);
     Card.create({
-      Title: req.body.title,
-      Priority: req.body.priority,
-      Status: req.body.status
+      Title: req.body.Title,
+      Priority: req.body.Priority,
+      Status: req.body.Status
     })
     .then((task) => {
       res.send();
