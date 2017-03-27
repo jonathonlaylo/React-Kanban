@@ -1,11 +1,11 @@
 import React from 'react';
 
-const KanbanInProgress = (props) => (
-  <div className="InProgress">
+const KanbanDone = (props) => (
+  <div className="Done">
     <h2>{props.Title}</h2>
     <p>Priority: {props.Priority}</p>
     <p>Status: {props.Status}</p>
   </div>
 );
 
-export default KanbanInProgress;
+export default KanbanDone;

@@ -6,6 +6,7 @@ import KanbanTitle from '../../components/kanbanTitle.js';
 import KanbanNew from '../../components/KanbanNew.js';
 import KanbanQueue from '../../components/KanbanQueue.js';
 import KanbanInProgress from '../../components/KanbanInProgress.js';
+import KanbanDone from '../../components/KanbanDone.js';
 import loadData from '../../lib/lib.js';
 
 // import KanbanPage from '../../components/KanbanPage.js';
@@ -79,13 +80,11 @@ class App extends Component {
           <h2>Queue</h2>
           {
             this.props.cards.map(({Title, Priority, Status}) =>
-            <div className="Card">
-              <KanbanQueue
-                Title={Title}
-                Priority={Priority}
-                Status={Status}
-              />
-            </div>
+            <KanbanQueue
+              Title={Title}
+              Priority={Priority}
+              Status={Status}
+            />
             )
           }
         </div>
@@ -93,15 +92,25 @@ class App extends Component {
             <h2>In Progress</h2>
             {
               this.props.cards.map(({Title, Priority, Status}) =>
-              <div className="Card">
-                <KanbanInProgress
-                  Title={Title}
-                  Priority={Priority}
-                  Status={Status}
-                />
-              </div>
+              <KanbanInProgress
+                Title={Title}
+                Priority={Priority}
+                Status={Status}
+              />
               )
             }
+        </div>
+        <div className="Done">
+          <h2>Done</h2>
+          {
+            this.props.cards.map(({Title, Priority, Status}) =>
+            <KanbanDone
+              Title={Title}
+              Priority={Priority}
+              Status={Status}
+            />
+            )
+          }
         </div>
       </div>
     );
