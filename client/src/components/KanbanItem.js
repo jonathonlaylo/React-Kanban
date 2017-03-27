@@ -1,12 +1,17 @@
 import React from 'react';
 
 class KanbanItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {Title: "", Priority: "", Status: ""}
+  }
+
   render() {
     return (
       <div>
         <h2>{this.props.Title}</h2>
         <p>{this.props.Priority}</p>
-        <p>{this.props.Status</p>
+        <p>{this.props.Status}</p>
       </div>
     )
   }

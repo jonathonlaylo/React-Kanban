@@ -9,11 +9,11 @@ router.route('/')
   .get((req, res) => {
     Card.findAll()
     .then( cards => {
-      res.json({cardsList:{cards}});
+      res.json(cards);
     });
   })
   .post((req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     Card.create({
       Title: req.body.Title,
       Priority: req.body.Priority,
@@ -26,11 +26,11 @@ router.route('/')
 
 router.route('/:id')
   .put((req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     Card.findById(req.params.id)
     .then((task) => {
       if(task) {
-        console.log('task', task);
+        // console.log('task', task);
         task.update({
           Title: req.body.title,
           Priority: req.body.priority,

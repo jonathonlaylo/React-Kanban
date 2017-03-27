@@ -7,7 +7,7 @@ const db = require('./models');
 const cardsroute = require('./routes/cards.js');
 
 app.use(bp.urlencoded({ extended: true }));
-app.use(bp.json());
+app.use(bp.json({extended: true}));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
