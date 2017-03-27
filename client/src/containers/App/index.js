@@ -4,6 +4,7 @@ import { addCard } from '../../actions';
 
 import KanbanTitle from '../../components/kanbanTitle.js';
 import KanbanNew from '../../components/KanbanNew.js';
+import KanbanQueue from '../../components/KanbanQueue.js';
 import KanbanInProgress from '../../components/KanbanInProgress.js';
 import loadData from '../../lib/lib.js';
 
@@ -74,15 +75,31 @@ class App extends Component {
             createNewCard={this.createNewCard}
           />
         </div>
-        <div className="InProgress">
-            <h2>In Progress Component</h2>
-            {
-              this.props.cards.map(({Title, Priority, Status}) =>
-              <KanbanInProgress
+        <div className="Queue">
+          <h2>Queue</h2>
+          {
+            this.props.cards.map(({Title, Priority, Status}) =>
+            <div className="Card">
+              <KanbanQueue
                 Title={Title}
                 Priority={Priority}
                 Status={Status}
               />
+            </div>
+            )
+          }
+        </div>
+        <div className="InProgress">
+            <h2>In Progress</h2>
+            {
+              this.props.cards.map(({Title, Priority, Status}) =>
+              <div className="Card">
+                <KanbanInProgress
+                  Title={Title}
+                  Priority={Priority}
+                  Status={Status}
+                />
+              </div>
               )
             }
         </div>

@@ -9,6 +9,26 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.KanbanNew {
+  border-style: solid;
+  border-color: pink;
+  border-width: 1px;
+}
+
+.Card {
+  border-style: dotted;
+  border-color: black;
+  border-width: 1px;
+}
+
+.Queue {
+  border-style: solid;
+  border-color: green;
+  border-width: 1px;
+}
+
+.InProgress {
+  border-style: solid;
+  border-color: orange;
+  border-width: 1px;
 }
