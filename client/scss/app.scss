@@ -1,0 +1,50 @@
+@import "partials/clearfix";
+@import "partials/reset";
+
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 55px;
+  padding: 20px;
+  color: white;
+}
+
+.KanbanNew {
+  border-style: solid;
+  border-color: pink;
+  border-width: 1px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Queue {
+  width: 32%;
+  border-style: dotted;
+  border-color: red;
+  border-width: 2px;
+}
+
+.InProgress {
+  width: 32%;
+  border-style: dotted;
+  border-color: yellow;
+  border-width: 2px;
+}
+
+.Done {
+  width: 32%;
+  border-style: dotted;
+  border-color: green;
+  border-width: 2px;
+}

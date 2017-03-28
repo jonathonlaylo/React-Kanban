@@ -12,7 +12,7 @@ import loadData from '../../lib/lib.js';
 // import KanbanPage from '../../components/KanbanPage.js';
 // import KanbanItem from '../../components/KanbanItem.js';
 // import {ADDCARD} from '../../actions';
-import './styles.css';
+// import './styles.css';
 
 class App extends Component {
   constructor(props) {
@@ -76,41 +76,43 @@ class App extends Component {
             createNewCard={this.createNewCard}
           />
         </div>
-        <div className="Queue">
-          <h2>Queue</h2>
-          {
-            this.props.cards.map(({Title, Priority, Status}) =>
-            <KanbanQueue
-              Title={Title}
-              Priority={Priority}
-              Status={Status}
-            />
-            )
-          }
-        </div>
-        <div className="InProgress">
-            <h2>In Progress</h2>
+        <div className="container">
+          <div className="Queue">
+            <h2>Queue</h2>
             {
               this.props.cards.map(({Title, Priority, Status}) =>
-              <KanbanInProgress
+              <KanbanQueue
                 Title={Title}
                 Priority={Priority}
                 Status={Status}
               />
               )
             }
-        </div>
-        <div className="Done">
-          <h2>Done</h2>
-          {
-            this.props.cards.map(({Title, Priority, Status}) =>
-            <KanbanDone
-              Title={Title}
-              Priority={Priority}
-              Status={Status}
-            />
-            )
-          }
+          </div>
+          <div className="InProgress">
+              <h2>In Progress</h2>
+              {
+                this.props.cards.map(({Title, Priority, Status}) =>
+                <KanbanInProgress
+                  Title={Title}
+                  Priority={Priority}
+                  Status={Status}
+                />
+                )
+              }
+          </div>
+          <div className="Done">
+            <h2>Done</h2>
+            {
+              this.props.cards.map(({Title, Priority, Status}) =>
+              <KanbanDone
+                Title={Title}
+                Priority={Priority}
+                Status={Status}
+              />
+              )
+            }
+          </div>
         </div>
       </div>
     );
