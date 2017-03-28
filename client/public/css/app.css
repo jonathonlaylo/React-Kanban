@@ -72,10 +72,8 @@ body {
   padding: 10px;
   color: white; }
 
-.KanbanNew {
-  border-style: solid;
-  border-color: pink;
-  border-width: 1px; }
+.Title {
+  text-align: left; }
 
 .container {
   display: flex;

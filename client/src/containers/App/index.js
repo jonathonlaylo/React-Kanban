@@ -50,7 +50,7 @@ class App extends Component {
     oReq.send(JSON.stringify(newCard));
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // this.loadData();
     loadData()
       .then( data => {
@@ -67,9 +67,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <KanbanTitle
-            title={this.title}
-          />
+          <div className="Title">
+            <KanbanTitle
+              title={this.title}
+            />
+          </div>
         </div>
         <div className="KanbanNew">
           <KanbanNew

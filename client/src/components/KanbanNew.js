@@ -44,8 +44,18 @@ class KanbanNew extends React.Component {
           <h3>Make New Kanban Card</h3>
           <form onSubmit={this.handleSubmit}>
             <input type="text" placeholder="title" onChange={this.handleChangeTitle} name="title" />
-            <input type="text" placeholder="priority" onChange={this.handleChangePriority} name="priority" />
-            <input type="text" placeholder="status" onChange={this.handleChangeStatus} name="status" />
+            <select name="priority" onChange={this.handleChangePriority}>
+              <option disabled selected value> -- select an option -- </option>
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
+            <select name="status" onChange={this.handleChangeStatus}>
+              <option disabled selected value> -- select an option -- </option>
+              <option value="QUEUE">QUEUE</option>
+              <option value="PROGRESS">PROGRESS</option>
+              <option value="DONE">DONE</option>
+            </select>
             <input type="submit"/>
           </form>
         </div>
