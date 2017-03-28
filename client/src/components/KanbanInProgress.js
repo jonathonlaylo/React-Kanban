@@ -1,7 +1,7 @@
 import React from 'react';
 
 const KanbanInProgress = (props) => (
-  <div>
+  <div className="InProgressCard">
     <h2>{props.Title}</h2>
     <p>Priority: {props.Priority}</p>
     <p>Status: {props.Status}</p>

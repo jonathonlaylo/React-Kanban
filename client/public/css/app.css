@@ -61,16 +61,15 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: 'Arial', sans-serif;
-  font-size: 14px; }
+  font-family: 'Arial', sans-serif; }
 
 .App {
   text-align: center; }
 
 .App-header {
   background-color: #222;
-  height: 55px;
-  padding: 20px;
+  height: 15px;
+  padding: 10px;
   color: white; }
 
 .KanbanNew {
@@ -84,18 +83,35 @@ body {
 
 .Queue {
   width: 32%;
-  border-style: dotted;
-  border-color: red;
-  border-width: 2px; }
+  border-right: solid 1px #000000; }
 
 .InProgress {
   width: 32%;
-  border-style: dotted;
-  border-color: yellow;
-  border-width: 2px; }
+  border-right: solid 1px #000000; }
 
 .Done {
-  width: 32%;
-  border-style: dotted;
-  border-color: green;
-  border-width: 2px; }
+  width: 32%; }
+
+.QueueCard {
+  padding: 10px;
+  margin: 5px;
+  background-color: #fcf1de;
+  border-color: #f6b14f;
+  border-style: solid;
+  border-width: 1px; }
+
+.InProgressCard {
+  padding: 10px;
+  margin: 5px;
+  background-color: #e5fdcc;
+  border-color: #9fd668;
+  border-style: solid;
+  border-width: 1px; }
+
+.DoneCard {
+  padding: 10px;
+  margin: 5px;
+  background-color: #f7f8fb;
+  border-color: #dee2e8;
+  border-style: solid;
+  border-width: 1px; }
