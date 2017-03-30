@@ -10,38 +10,11 @@ import KanbanDone from '../../components/KanbanDone.js';
 import loadData from '../../lib/lib.js';
 import statusChange from '../../lib/updateTask.js';
 
-// import KanbanPage from '../../components/KanbanPage.js';
-// import KanbanItem from '../../components/KanbanItem.js';
-// import {ADDCARD} from '../../actions';
-// import './styles.css';
-
 class App extends Component {
   constructor(props) {
       super(props);
       this.title='React Kanban';
-      // this.state = {Title: "", Priority: "", Status: ""}
-      // this.todo = [];
-
-      // this.createNewCard = this.createNewCard.bind(this);
-      // this.loadData = this.loadData.bind(this);
-      // this.loadKanban = this.loadKanban.bind(this);
     }
-
-  // loadKanban(data){
-  //   const parsedData = JSON.parse(data.currentTarget.response);
-  //   let TodoCards = parsedData;
-    // console.log('TodoCards', TodoCards);
-    // this.setState({
-    //   todo: TodoCards
-    // })
-  // }
-
-  // loadData(){
-  //   const oReq = new XMLHttpRequest();
-  //   oReq.addEventListener("load", this.loadKanban);
-  //   oReq.open("GET", 'http://localhost:8080/api/kanban/todo');
-  //   oReq.send();
-  // }
 
   createNewCard(newCard){
     // console.log(newCard);
