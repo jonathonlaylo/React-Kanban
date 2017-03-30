@@ -8,7 +8,7 @@ import KanbanQueue from '../../components/KanbanQueue.js';
 import KanbanInProgress from '../../components/KanbanInProgress.js';
 import KanbanDone from '../../components/KanbanDone.js';
 import loadData from '../../lib/lib.js';
-import statusChange from '../../lib/updateTask.js';
+// import statusChange from '../../lib/updateTask.js';
 
 class App extends Component {
   constructor(props) {
@@ -31,16 +31,9 @@ class App extends Component {
         console.log('will mount data', data);
         data.forEach(cards => {
           console.log('cards',cards);
-          this.props.onLoadData(cards._id, cards.Title, cards.Priority, cards.Status);
+          this.props.onLoadData(cards.id, cards.Title, cards.Priority, cards.Status);
         });
       });
-
-    // statusChange()
-    //   .then( statusData => {
-    //     statusData.forEach(statusCard => {
-    //       this.props.onStatusData(statusCard._id)
-    //     });
-    //   });
   }
 
   render() {
@@ -63,11 +56,12 @@ class App extends Component {
           <div className="Queue">
             <h2>Queue</h2>
             {
-              this.props.cards.filter(({Status}) => Status === "QUEUE").map(({_id, Title, Priority, Status}) =>
+              this.props.cards.filter(({Status}) => Status === "QUEUE").map(({id, Title, Priority, Status}) =>
               <KanbanQueue
                 Title={Title}
                 Priority={Priority}
                 Status={Status}
+                statusChange={this.statusChange}
               />
               )
             }
@@ -75,7 +69,7 @@ class App extends Component {
           <div className="InProgress">
               <h2>In Progress</h2>
               {
-                this.props.cards.filter(({Status}) => Status === "PROGRESS").map(({_id, Title, Priority, Status}) =>
+                this.props.cards.filter(({Status}) => Status === "PROGRESS").map(({id, Title, Priority, Status}) =>
                 <KanbanInProgress
                   Title={Title}
                   Priority={Priority}
@@ -87,7 +81,7 @@ class App extends Component {
           <div className="Done">
             <h2>Done</h2>
             {
-              this.props.cards.filter(({Status}) => Status === "DONE").map(({_id, Title, Priority, Status}) =>
+              this.props.cards.filter(({Status}) => Status === "DONE").map(({id, Title, Priority, Status}) =>
               <KanbanDone
                 Title={Title}
                 Priority={Priority}
@@ -110,11 +104,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLoadData: (_id, Title, Priority, Status) => {
-      dispatch(addCard(_id, Title, Priority, Status));
+    onLoadData: (id, Title, Priority, Status) => {
+      dispatch(addCard(id, Title, Priority, Status));
     },
-    onStatusData: (_id, Title, Priority, Status) => {
-      dispatch(updateStatus(_id, Title, Priority, Status));
+    onStatusData: (id, Title, Priority, Status) => {
+      dispatch(updateStatus(id, Title, Priority, Status));
     }
   }
 }

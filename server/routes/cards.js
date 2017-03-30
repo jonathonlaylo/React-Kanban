@@ -15,7 +15,7 @@ router.route('/')
   .post((req, res) => {
     // console.log(req.body);
     Card.create({
-      _id: req.body._id,
+      id: req.body.id,
       Title: req.body.Title,
       Priority: req.body.Priority,
       Status: req.body.Status
@@ -25,15 +25,15 @@ router.route('/')
     });
   });
 
-router.route('/:id')
+router.route('/edit')
   .put((req, res) => {
     // console.log(req.body);
-    Card.findById(req.params.id)
+    Card.update(req.params.id)
     .then((task) => {
       if(task) {
         // console.log('task', task);
         task.update({
-          _id: req.body._id,
+          id: req.body.id,
           Title: req.body.title,
           Priority: req.body.priority,
           Status: req.body.status

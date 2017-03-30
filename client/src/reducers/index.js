@@ -11,7 +11,7 @@ function cards(state = initialState, action) {
         cards: [
           ...state.cards,
           {
-            _id: action._id,
+            id: action.id,
             Title: action.Title,
             Priority: action.Priority,
             Status: action.Status

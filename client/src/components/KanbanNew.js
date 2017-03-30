@@ -3,7 +3,7 @@ import React from 'react';
 class KanbanNew extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {_id: "",Title: "", Priority: "", Status: ""}
+    this.state = {id: "",Title: "", Priority: "", Status: ""}
     this.handleChangeTitle = this.handleChangeTitle.bind(this)
     this.handleChangePriority = this.handleChangePriority.bind(this)
     this.handleChangeStatus = this.handleChangeStatus.bind(this)
@@ -31,7 +31,7 @@ class KanbanNew extends React.Component {
     event.preventDefault();
     console.log(this.state);
     this.props.createNewCard({
-      _id:this.state._id,
+      id:this.state.id,
       Title:this.state.Title,
       Priority:this.state.Priority,
       Status:this.state.Status

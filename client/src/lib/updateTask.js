@@ -7,7 +7,7 @@ module.exports = function statusChange(card){
     }
     const oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
-    oReq.open("PUT", 'http://localhost:8080/api/kanban/todo/:id');
+    oReq.open("PUT", 'http://localhost:8080/api/kanban/todo/edit');
     oReq.send(JSON.stringify(card));
   });
 };
