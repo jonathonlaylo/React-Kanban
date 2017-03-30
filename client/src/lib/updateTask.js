@@ -1,13 +1,13 @@
-module.exports = function loadData(){
+module.exports = function statusChange(card){
   return new Promise((resolve, reject) => {
     function reqListener(){
       const parsedData = JSON.parse(this.responseText);
-      console.log('parsedData', parsedData);
+      console.log('parsedData-Update', parsedData);
       resolve(parsedData);
     }
     const oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
-    oReq.open("GET", 'http://localhost:8080/api/kanban/todo');
-    oReq.send();
+    oReq.open("PUT", 'http://localhost:8080/api/kanban/todo/:id');
+    oReq.send(JSON.stringify(card));
   });
 };

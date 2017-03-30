@@ -15,6 +15,7 @@ router.route('/')
   .post((req, res) => {
     // console.log(req.body);
     Card.create({
+      _id: req.body._id,
       Title: req.body.Title,
       Priority: req.body.Priority,
       Status: req.body.Status
@@ -32,6 +33,7 @@ router.route('/:id')
       if(task) {
         // console.log('task', task);
         task.update({
+          _id: req.body._id,
           Title: req.body.title,
           Priority: req.body.priority,
           Status: req.body.status
