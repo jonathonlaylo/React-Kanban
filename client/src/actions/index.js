@@ -2,7 +2,7 @@ export const ADD_CARD = 'ADD_CARD'
 export const UPDATE_STATUS = 'UPDATE_STATUS'
 
 export function addCard(id, Title, Priority, Status) {
-  console.log('arguments', arguments);
+  console.log('arguments-action/index', arguments);
   return {
     type: 'ADD_CARD',
     id,

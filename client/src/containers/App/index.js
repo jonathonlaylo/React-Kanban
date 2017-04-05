@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard, updateStatus} from '../../actions';
-
+import { addCard } from '../../actions';
+// import { updateStatus } from '../../actions';
+import cards from '../../reducers';
+import Card from '../../components/Cards.js';
 import KanbanTitle from '../../components/kanbanTitle.js';
 import KanbanNew from '../../components/KanbanNew.js';
 import KanbanQueue from '../../components/KanbanQueue.js';
@@ -24,20 +26,35 @@ class App extends Component {
     oReq.send(JSON.stringify(newCard));
   }
 
+  // statusChangeCard(statusCard){
+  //   const oReq = new XMLHttpRequest();
+  //   // oReq.addEventListener("load", reqListener);
+  //   oReq.open("PUT", 'http://localhost:8080/api/kanban/todo/editcard', true);
+  //   oReq.setRequestHeader("Content-type", "application/json");
+  //   // console.log('xhr card: ', card);
+  //   oReq.send(JSON.stringify(statusCard));
+  // }
+
   componentWillMount() {
-    // this.loadData();
     loadData()
       .then( data => {
-        console.log('will mount data', data);
+        // console.log('will mount data', data);
         data.forEach(cards => {
-          console.log('cards',cards);
+          // console.log('cards',cards);
           this.props.onLoadData(cards.id, cards.Title, cards.Priority, cards.Status);
         });
       });
+
+    // statusChange()
+    //   .then( statusData => {
+    //     statusData.forEach( cards => {
+    //       this.props.onStatusData(cards._key);
+    //     });
+    //   });
   }
 
   render() {
-    console.log('props', this.props);
+    // console.log('props', this.props);
     return (
       <div className="App">
         <div className="App-header">
@@ -54,41 +71,16 @@ class App extends Component {
         </div>
         <div className="container">
           <div className="Queue">
-            <h2>Queue</h2>
-            {
-              this.props.cards.filter(({Status}) => Status === "QUEUE").map(({id, Title, Priority, Status}) =>
-              <KanbanQueue
-                Title={Title}
-                Priority={Priority}
-                Status={Status}
-                statusChange={this.statusChange}
-              />
-              )
-            }
+            <h1>Queue</h1>
+            <KanbanQueue cards={this.props.cards}/>
           </div>
           <div className="InProgress">
-              <h2>In Progress</h2>
-              {
-                this.props.cards.filter(({Status}) => Status === "PROGRESS").map(({id, Title, Priority, Status}) =>
-                <KanbanInProgress
-                  Title={Title}
-                  Priority={Priority}
-                  Status={Status}
-                />
-                )
-              }
+            <h1>In Progress</h1>
+            <KanbanInProgress cards={this.props.cards}/>
           </div>
           <div className="Done">
-            <h2>Done</h2>
-            {
-              this.props.cards.filter(({Status}) => Status === "DONE").map(({id, Title, Priority, Status}) =>
-              <KanbanDone
-                Title={Title}
-                Priority={Priority}
-                Status={Status}
-              />
-              )
-            }
+            <h1>Done</h1>
+            <KanbanDone cards={this.props.cards}/>
           </div>
         </div>
       </div>
@@ -106,10 +98,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoadData: (id, Title, Priority, Status) => {
       dispatch(addCard(id, Title, Priority, Status));
-    },
-    onStatusData: (id, Title, Priority, Status) => {
-      dispatch(updateStatus(id, Title, Priority, Status));
     }
+    // ,
+    // onStatusData: (_key, Title, Priority, Status) => {
+    //   dispatch(updateStatus(_key, Title, Priority, Status));
+    // }
   }
 }
 

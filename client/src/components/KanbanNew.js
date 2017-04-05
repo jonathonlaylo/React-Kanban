@@ -10,18 +10,29 @@ class KanbanNew extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  handleChangeId(event){
+    event.preventDefault();
+    this.setStae({
+      id: event.target.value
+    })
+  }
+
   handleChangeTitle(event){
+    event.preventDefault();
     this.setState({
       Title: event.target.value
     })
   }
 
- handleChangePriority(event){
+  handleChangePriority(event){
+    event.preventDefault();
     this.setState({
       Priority: event.target.value
     })
   }
- handleChangeStatus(event){
+
+  handleChangeStatus(event){
+    event.preventDefault();
     this.setState({
       Status: event.target.value
     })
@@ -29,9 +40,9 @@ class KanbanNew extends React.Component {
 
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state);
+    console.log('this.state', this.state);
     this.props.createNewCard({
-      id:this.state.id,
+      id:this.state._key,
       Title:this.state.Title,
       Priority:this.state.Priority,
       Status:this.state.Status

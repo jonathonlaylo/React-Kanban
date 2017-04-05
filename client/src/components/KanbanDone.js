@@ -1,18 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Card from '../components/Cards.js';
 
-const KanbanDone = (props) => (
-  <div className="DoneCard">
-    <h2>{props.Title}</h2>
-    <p>Priority: {props.Priority}</p>
-    <p>Status: {props.Status}
-    <select>
-      <option disabled selected value> -- select an option -- </option>
-          <option value="QUEUE">QUEUE</option>
-          <option value="PROGRESS">PROGRESS</option>
-          <option value="DONE">DONE</option>
-    </select>
-    </p>
-  </div>
-);
+class KanbanDone extends Component {
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  render(){
+    return (
+      <div className="DoneCard">
+        {this.props.cards.filter((card) => card.Status === "DONE").map((cards) => {
+          return(<Card
+            id={cards.id}
+            Title={cards.Title}
+            Status={cards.Status}
+            Priority={cards.Priority}
+            />
+            )
+          })
+        }
+      </div>
+    )
+  }
+};
 
 export default KanbanDone;
