@@ -1,9 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addCard } from '../actions';
+
 
 class KanbanNew extends React.Component {
   constructor(props) {
     super(props);
     this.state = {id: "",Title: "", Priority: "", Status: ""}
+    this.handleChangeId = this.handleChangeId.bind(this)
     this.handleChangeTitle = this.handleChangeTitle.bind(this)
     this.handleChangePriority = this.handleChangePriority.bind(this)
     this.handleChangeStatus = this.handleChangeStatus.bind(this)
@@ -42,10 +46,13 @@ class KanbanNew extends React.Component {
     event.preventDefault();
     console.log('this.state', this.state);
     this.props.createNewCard({
-      id:this.state._key,
+      id:this.state.id,
       Title:this.state.Title,
       Priority:this.state.Priority,
       Status:this.state.Status
+    })
+    .then((card) => {
+      this.props.onLoadData(card.id, card.Title, card.Priority, card.Status)
     })
   }
 
@@ -76,4 +83,21 @@ class KanbanNew extends React.Component {
   }
 }
 
-export default KanbanNew;
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoadData: (id, Title, Priority, Status) => {
+      dispatch(addCard(id, Title, Priority, Status));
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(KanbanNew);

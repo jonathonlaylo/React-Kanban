@@ -21,9 +21,7 @@ body {
 }
 
 .KanbanNew {
-  // border-style: solid;
-  // border-color: pink;
-  // border-width: 1px;
+  margin-top: 10px;
 }
 
 .container {
@@ -32,23 +30,9 @@ body {
 }
 
 .Queue {
+  margin-top: 10px;
   width: 32%;
   border-right: solid 1px #000000;
-}
-
-.InProgress {
-  width: 32%;
-  border-right: solid 1px #000000;
-}
-
-.Done {
-  width: 32%;
-}
-
-.QueueCard {
-  padding: 10px;
-  margin: 5px;
-  text-align: left;
 
   background-color: #fcf1de;
   border-color: #f6b14f;
@@ -56,10 +40,10 @@ body {
   border-width: 1px;
 }
 
-.InProgressCard {
-  padding: 10px;
-  margin: 5px;
-  text-align: left;
+.InProgress {
+  margin-top: 10px;
+  width: 32%;
+  border-right: solid 1px #000000;
 
   background-color: #e5fdcc;
   border-color: #9fd668;
@@ -67,13 +51,55 @@ body {
   border-width: 1px;
 }
 
-.DoneCard {
-  padding: 10px;
-  margin: 5px;
-  text-align: left;
+.Done {
+  margin-top: 10px;
+  width: 32%;
 
   background-color: #f7f8fb;
   border-color: #dee2e8;
   border-style: solid;
   border-width: 1px;
+}
+
+.singleCard {
+  padding: 10px;
+  margin: 5px;
+  text-align: left;
+
+  background-color: white;
+  border-color: gray;
+  border-style: solid;
+  border-width: 1px;
+  // background-color: #fcf1de;
+  // border-color: #f6b14f;
+  // border-style: solid;
+  // border-width: 1px;
+}
+
+.QueueCard {
+  padding: 10px;
+  margin: 5px;
+  text-align: left;
+}
+
+.InProgressCard {
+  padding: 10px;
+  margin: 5px;
+  text-align: left;
+
+  // background-color: #e5fdcc;
+  // border-color: #9fd668;
+  // border-style: solid;
+  // border-width: 1px;
+}
+
+.DoneCard {
+  padding: 10px;
+  margin: 5px;
+  text-align: left;
+
+  // background-color: #f7f8fb;
+  // border-color: #dee2e8;
+  // border-style: solid;
+  // border-width: 1px;
 }

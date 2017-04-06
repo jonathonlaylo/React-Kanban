@@ -11,6 +11,7 @@ class KanbanInProgress extends Component {
       <div className="InProgressCard">
         {this.props.cards.filter((card) => card.Status === "PROGRESS").map((cards) => {
           return(<Card
+            key={cards.id}
             id={cards.id}
             Title={cards.Title}
             Status={cards.Status}

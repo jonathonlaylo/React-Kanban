@@ -8,6 +8,7 @@ class KanbanQueue extends Component {
       <div className="QueueCard" >
         {this.props.cards.filter((card) => card.Status === "QUEUE").map((cards) => {
           return(<Card
+            key={cards.id}
             id={cards.id}
             Title={cards.Title}
             Status={cards.Status}

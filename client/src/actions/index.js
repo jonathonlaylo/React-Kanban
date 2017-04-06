@@ -12,10 +12,12 @@ export function addCard(id, Title, Priority, Status) {
   };
 };
 
-export function updateStatus(id, Status) {
+export function updateStatus(id, Title, Priority, Status) {
   return {
     type: 'UPDATE_STATUS',
     id,
+    Title,
+    Priority,
     Status
   };
 };

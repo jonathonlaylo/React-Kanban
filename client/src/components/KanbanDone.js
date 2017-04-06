@@ -11,6 +11,7 @@ class KanbanDone extends Component {
       <div className="DoneCard">
         {this.props.cards.filter((card) => card.Status === "DONE").map((cards) => {
           return(<Card
+            key={cards.id}
             id={cards.id}
             Title={cards.Title}
             Status={cards.Status}

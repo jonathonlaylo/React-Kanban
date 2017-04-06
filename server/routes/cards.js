@@ -15,13 +15,13 @@ router.route('/')
   .post((req, res) => {
     // console.log(req.body);
     Card.create({
-      id: req.body.id,
       Title: req.body.Title,
       Priority: req.body.Priority,
       Status: req.body.Status
     })
     .then((task) => {
-      res.send();
+      console.log(task);
+      res.send(task);
     });
   });
 
@@ -65,7 +65,7 @@ router.route('/editcard')
   //   });
   });
 
- router.route('/:_key')
+ router.route('/:id')
   .delete((req, res) => {
     Card.destroy({
       where: {

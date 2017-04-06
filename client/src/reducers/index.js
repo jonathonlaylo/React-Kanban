@@ -19,17 +19,20 @@ function cards(state = initialState, action) {
         ]
       });
     case UPDATE_STATUS:
-      let updateCards = state.cards.map( card => {
-        if(card.id === action.id) {
-          card.status = action.status;
-          return card;
-        } else {
+      let updateCards = state.cards.filter( card => {
+        if(card.id !== action.id) {
           return card;
         }
-      })
+      });
       return Object.assign({}, state, {
         cards: [
-          ...updateCards
+          ...updateCards,
+          {
+            id: action.id,
+            Title: action.Title,
+            Priority: action.Priority,
+            Status: action.Status
+          }
         ]
       })
 
